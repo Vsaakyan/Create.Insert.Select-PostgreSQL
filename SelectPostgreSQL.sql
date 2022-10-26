@@ -63,6 +63,5 @@ WHERE t.duration = (SELECT MIN(duration) FROM tracks);
 
 SELECT namee FROM album a 
 JOIN tracks t ON t.album_id = a.id
-GROUP BY a.id 
-ORDER BY COUNT(t.name_of_track)
-LIMIT 1;
+WHERE t.id  < (SELECT AVG(album_id) FROM tracks )
+GROUP BY a.namee;
